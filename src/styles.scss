@@ -1,1 +1,135 @@
-/* You can add global styles to this file, and also import other style files */
+$color-contacto: #43425C;
+$borde-contacto: #3B3953;
+$header-chat: #3D3C57;
+$mensaje-local: #EDF0F5;
+$mensaje-externo: #408FEC;
+
+.main{
+    padding-top: 40px;
+    height: calc(100vh - 70px);
+}
+
+.chat-window {
+    max-width: 1080px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: $header-chat;
+    border-radius: 7px;
+    
+    &.container-fluid{
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+}
+
+.body-chat {
+    min-height: 600px;
+    > col-4 {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
+}
+
+.contactos{
+    background-color: $color-contacto;
+    border-bottom-left-radius: 7px;
+    height: 100%;
+
+    .contacto{
+        min-height: 62px;
+        padding: 8px 16px;
+        color: white;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border: 1px solid #3B3953;
+
+        &:hover{
+            cursor: pointer;
+            background-color: lighten( $color-contacto, 10% );
+        }
+   
+    }
+
+}
+
+.img-contact{
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+
+// Componente Historial
+
+.main-historial{
+    background-color: white;
+    border-bottom-right-radius: 7px;
+    padding: 20px 40px;
+    height: 100%;
+    max-height: 100%;
+    overflow-y: hidden;
+
+    .mensaje{
+        height: 89%;
+        max-height: 89%;
+        overflow-y: auto;
+    }
+
+        .mensaje-local{
+            .bubble{
+                max-width: 80%;
+                border-radius: 50px;
+                border-bottom-left-radius: 0;
+                background-color: $mensaje-local;
+            }
+
+            p{
+                padding: 15px 30px;
+            }
+        }
+
+        .mensaje-externo{
+            .bubble{
+                color: white;
+                margin-left: auto;
+                max-width: 80%;
+                border-radius: 50px;
+                border-bottom-right-radius: 0;
+                background-color: $mensaje-externo;
+            }
+
+            p{
+                padding: 15px 30px;
+            }
+
+            .time{
+                text-align: right;
+            }
+
+        }
+
+    .form-group{
+        margin-bottom: 0;
+    }
+}
+
+// Componente header chat
+
+header{
+    .chat-window &{
+        width: 100%;
+
+        > div{
+            padding: 20px;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+    }
+}
