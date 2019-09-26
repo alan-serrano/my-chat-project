@@ -1,22 +1,18 @@
-<header class="bg-dark">
+<header class="bg-light">
     <div class="container">
-        <nav class="navbar navbar-expand-sm navbar-dark ">
-            <a class="navbar-brand" href="#">Chat</a>
-            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
-                data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <nav class="navbar navbar-expand-sm navbar-light ">
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <li class="nav-item" [routerLinkActive]="'active'">
+                        <a class="nav-link" [routerLink]="['/']">Inicio<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item" [routerLinkActive]="'active'">
+                        <a class="nav-link" [routerLink]="['/chat']">Chat<span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <button class="btn btn-outline-success my-2 my-sm-0">Ingresar</button>
-                    <button class="btn btn-outline-danger my-2 my-sm-0" *ngIf="false">Salir</button>
-                </form>
+                <button [routerLink]="['/login']" class="btn my-2 my-sm-0 mr-2">Ingresar</button>
+                <button [routerLink]="['/registro']" class="btn btn-primary my-2 my-sm-0">Crear una cuenta</button>
+                <button [routerLink]="['/']" class="btn btn-outline-danger my-2 my-sm-0" *ngIf="false">Salir</button>
             </div>
         </nav>
     </div>
