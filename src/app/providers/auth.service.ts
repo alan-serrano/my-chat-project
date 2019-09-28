@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UsuarioModel } from '../model/usuario.model';
-import { NgIf } from '@angular/common';
 import { map } from 'rxjs/operators';
 
 
@@ -38,7 +37,8 @@ export class AuthService {
   }
 
   logout() {
-
+    localStorage.removeItem('token');
+    this.idToken = '';
   }
 
   nuevoUsuario(usuario: UsuarioModel) {
@@ -57,16 +57,20 @@ export class AuthService {
       );
   }
 
-  private guardarToken(idToken: string) {
+  guardarToken(idToken: string) {
     this.idToken = idToken;
     localStorage.setItem('token', idToken);
   }
 
-  private leerToken() {
+  leerToken() {
     if (localStorage.getItem('token')) {
       this.idToken = localStorage.getItem('token');
     } else {
       this.idToken = '';
     }
+  }
+
+  estarAutenticado() {
+    return this.idToken.length > 2;
   }
 }

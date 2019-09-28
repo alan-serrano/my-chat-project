@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 import { UsuarioModel } from '../../model/usuario.model';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/providers/auth.service';
 import Swal from 'sweetalert2';
 
 
@@ -15,6 +15,7 @@ import Swal from 'sweetalert2';
 export class RegistroComponent implements OnInit {
 
   usuario: UsuarioModel;
+  recordarme = false;
 
   constructor(
     private auth: AuthService,
@@ -40,8 +41,18 @@ export class RegistroComponent implements OnInit {
     this.auth.nuevoUsuario(this.usuario)
       .subscribe( response => {
         console.log(response);
+
+        // Llamar modal
         Swal.close();
-        this.router.navigateByUrl('');
+
+        // Navegar al home
+        this.router.navigateByUrl('/home');
+
+        // Recordar usuario
+        if (this.recordarme) {
+          localStorage.setItem('email', this.usuario.email);
+        }
+
       }, (reject: any) => {
         console.log(reject);
         Swal.fire({

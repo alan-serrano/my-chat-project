@@ -13,9 +13,7 @@
                         <a class="nav-link" [routerLink]="['/chat']">Chat<span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
-                <button [routerLink]="['/login']" class="btn my-2 my-sm-0 mr-2">Ingresar</button>
-                <button [routerLink]="['/registro']" class="btn btn-primary my-2 my-sm-0">Crear una cuenta</button>
-                <button [routerLink]="['/']" class="btn btn-outline-danger my-2 my-sm-0" *ngIf="false">Salir</button>
+                <button [routerLink]="['/login']" (click)="logout()" class="btn btn-outline-danger my-2 my-sm-0">Salir</button>
             </div>
         </nav>
     </div>
