@@ -4,6 +4,9 @@ $header-chat: #3D3C57;
 $mensaje-local: #EDF0F5;
 $mensaje-externo: #408FEC;
 
+@import 'assets/scss/main.scss';
+@import 'assets/scss/util.scss';
+
 .main{
     padding-top: 40px;
     height: calc(100vh - 70px);
