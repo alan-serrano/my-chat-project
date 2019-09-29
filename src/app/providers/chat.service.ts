@@ -30,7 +30,7 @@ export class ChatService {
           for (const key in usuarios) {
             if (usuarios.hasOwnProperty(key)) {
               const el = usuarios[key];
-              if (el.email === usuario.email) {
+              if (el.email.toLowerCase() === usuario.email.toLowerCase()) {
                 return key;
               }
             }
