@@ -1,0 +1,8 @@
+<div class="" [ngClass]="{'mensaje-local': idUsuarioActual !== mensaje.emisor, 'mensaje-externo': idUsuarioActual === mensaje.emisor}">
+    <div class="bubble">
+        <p class="m-1">
+            {{ mensaje.mensaje }}
+        </p>
+    </div>
+    <div class="time"><small>{{ mostrarFecha() }}</small></div>
+</div>

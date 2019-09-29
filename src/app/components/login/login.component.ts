@@ -5,6 +5,7 @@ import { AuthService } from '../../providers/auth.service';
 
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { ChatService } from '../../providers/chat.service';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
-    private router: Router) { }
+    private router: Router,
+    private chat: ChatService) { }
 
   ngOnInit() {
 
@@ -42,7 +44,6 @@ export class LoginComponent implements OnInit {
 
     this.auth.login(this.usuario)
       .subscribe( response => {
-        console.log(response);
 
         // Lanzar modal
         Swal.close();
@@ -56,8 +57,14 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('email', this.usuario.email);
         }
 
+        // Obtener id Usuario y guardarlo en local storage
+        this.chat.obtenerUsuarioId(this.usuario)
+          .subscribe( resp => {
+            localStorage.setItem('idUsuario', resp);
+          });
+
+
       }, (reject: any) => {
-        console.log(reject);
         Swal.fire({
           type: 'error',
           text: reject.error.error.message

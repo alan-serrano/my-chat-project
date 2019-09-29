@@ -9,7 +9,7 @@ $mensaje-externo: #408FEC;
 
 .main{
     padding-top: 40px;
-    height: calc(100vh - 70px);
+    min-height: 100vh;
 }
 
 .chat-window {
@@ -27,10 +27,22 @@ $mensaje-externo: #408FEC;
 }
 
 .body-chat {
-    min-height: 600px;
+    min-height: calc(100vh - 80px - 134px);
     > col-4 {
         padding-right: 0 !important;
         padding-left: 0 !important;
+    }
+}
+
+.oculto {
+    @media (max-width: 768px){
+        display: none;
+    }
+}
+
+.celular {
+    @media (min-width: 768px){
+        display: none;
     }
 }
 
@@ -75,8 +87,8 @@ $mensaje-externo: #408FEC;
     overflow-y: hidden;
 
     .mensaje{
-        height: 89%;
-        max-height: 89%;
+        height: calc(100% - 47px);
+        max-height: calc(100% - 47px);
         overflow-y: auto;
     }
 
@@ -120,19 +132,27 @@ $mensaje-externo: #408FEC;
 
 // Componente header chat
 
-header{
-    .chat-window &{
-        width: 100%;
 
-        > div{
+    .chat-window{
+        header {
             padding: 20px;
-            width: auto;
-            margin-left: auto;
-            margin-right: auto;
+            width: 100%;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            color: white;
+            flex-grow: 0;
+
+            @media (min-width:768px) {
+                padding: 40px;
+            }
+
+    
+            > div{
+                width: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: white;
+            }
         }
     }
-}

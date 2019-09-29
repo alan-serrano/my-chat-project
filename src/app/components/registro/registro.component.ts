@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { UsuarioModel } from '../../model/usuario.model';
 import { AuthService } from 'src/app/providers/auth.service';
 import Swal from 'sweetalert2';
+import { ChatService } from '../../providers/chat.service';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class RegistroComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
-    private router: Router) {
+    private router: Router,
+    private chat: ChatService) {
     this.usuario = new UsuarioModel();
   }
 
@@ -52,6 +54,20 @@ export class RegistroComponent implements OnInit {
         if (this.recordarme) {
           localStorage.setItem('email', this.usuario.email);
         }
+
+        // Guardar registro en el REST API de firebase
+
+        this.chat.agregarUsuario(this.usuario)
+          .subscribe();
+
+        // Obtener id Usuario y guardarlo en local storage
+        setTimeout( () => {
+          this.chat.obtenerUsuarioId(this.usuario)
+          .subscribe( resp => {
+            localStorage.setItem('idUsuario', resp);
+            console.log(resp);
+          });
+        }, 1000);
 
       }, (reject: any) => {
         console.log(reject);

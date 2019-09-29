@@ -8,11 +8,11 @@ import { AuthGuard } from './guards/auth.guard';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
-  { path: 'chat', component: ChatComponent, canActivate: [AuthGuard] },
+  { path: 'chat/:id', component: ChatComponent, canActivate: [AuthGuard] },
+  { path: 'chat', redirectTo: 'chat/escoge-un-chat' },
   { path: 'registro', component: RegistroComponent },
-  { path: '**', redirectTo: '' },
+  { path: '**', redirectTo: 'chat/escoge-un-chat' },
 ];
 
 @NgModule({
